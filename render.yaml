@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: callofast-api
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm run dev:server
+    autoDeploy: true
+    envVars:
+      - key: APP_ORIGIN
+        sync: false
+      - key: EMAILJS_SERVICE_ID
+        sync: false
+      - key: EMAILJS_TEMPLATE_ID
+        sync: false
+      - key: EMAILJS_PUBLIC_KEY
+        sync: false
+      - key: EMAILJS_PRIVATE_KEY
+        sync: false
+      - key: STORE_FROM_NAME
+        value: Callofast
+      - key: STORE_REPLY_TO
+        sync: false
