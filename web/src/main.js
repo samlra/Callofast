@@ -2,6 +2,8 @@ const state = {
   cart: []
 };
 
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
+
 function $(id) {
   return document.getElementById(id);
 }
@@ -130,7 +132,7 @@ async function checkout() {
   try {
     statusEl.innerText = 'Bestellung wird gesendet...';
     buyBtn.disabled = true;
-    const r = await fetch(`/api/checkout`, {
+    const r = await fetch(`${API_BASE_URL}/api/checkout`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
